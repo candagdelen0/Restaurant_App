@@ -33,7 +33,15 @@
                     if($ad == "" || $sifre == ""):
                         $sistem->uyari("danger","Bilgiler Boş Bırakılamaz","index.php");
                     else:
-                        // yönlendirme
+                        if ($kullanici == "yon"):
+                            $sistem->giriskont($db, $ad, $sifre, "yonetim");
+                        elseif($kullanici == "rest"):
+                            $sistem->giriskont($db, $ad, $sifre, "garson");
+                        elseif($kullanici == "kasa"):
+                            $sistem->giriskont($db, $ad, $sifre, "kasiyer");
+                        else:
+                            $sistem->uyari("danger","HATALI İŞLEM","index.php");
+                        endif;  
                     endif;
                 endif;
             ?></div>
