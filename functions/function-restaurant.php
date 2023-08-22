@@ -16,4 +16,10 @@
             $data = htmlspecialchars($data);
             return $data;
         }
+
+        public function uyari($tip, $metin, $sayfa) {
+            echo '<div class="mt-3 alert alert-'.$tip .' ">'. $metin .' </div>';
+            header('refresh:2, url='. $sayfa.' ');
+        }
+
     }
