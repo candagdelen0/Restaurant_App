@@ -27,7 +27,14 @@
                         <div class="col-md-12"><input type="submit" name="buton" class="btn btn-info mb-3 mt-3 pt-2 pb-2 ps-5 pe-5" value="Giriş Yap"></div>
                     </form><?php 
                 else:
-                    // giriş işlemi
+                    @$ad = $sistem->safety($_POST["ad"]);
+                    @$sifre = $sistem->safety($_POST["sifre"]);
+                    @$kullanici = $_POST["kullanici"];
+                    if($ad == "" || $sifre == ""):
+                        $sistem->uyari("danger","Bilgiler Boş Bırakılamaz","index.php");
+                    else:
+                        // yönlendirme
+                    endif;
                 endif;
             ?></div>
             <div class="col-md-4"></div>
