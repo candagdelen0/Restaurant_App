@@ -1,4 +1,11 @@
-
+<?php
+    require "functions/function-restaurant.php";
+    include "partial/_header.php";
+    $sistem = new System;
+    if(!$_SESSION['Kullanici']):
+        header("Location:index.php");
+    endif;
+?>
 <title>MeyCan Restaurant</title>
 
 <body>
