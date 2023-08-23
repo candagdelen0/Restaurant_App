@@ -108,4 +108,12 @@
             $toplamSip = $sip->num_rows;
             echo $toplamSip;
         }
+
+        public function doluluk($vt) {
+            $dol = $this->genelsorgu($vt, "SELECT * FROM doluluk",1);
+            $doldur = $dol->FETCH_ASSOC();
+            $total = $doldur["bosMasa"] + $doldur["doluMasa"];
+            $oran = ($doldur["doluMasa"]*100) / $total;
+            echo $oran = substr($oran, 0, 5). " %";
+        }
     }
