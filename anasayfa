@@ -28,7 +28,7 @@
         
         <div class="row fixed-bottom" id="bottombar">
             <div class="col-md-2 mt-3 mb-3 ps-4 border-end" id="divbottom"><img src="../Dosyalar/ikon/restaurant.png" class="ps-2"> Toplam Masa: <span class="bg-danger border-danger rounded p-1"><?php $sistem->toplamMasa($db); ?></span></div>
-            <div class="col-md-2 mt-3 mb-3 border-end" id="divbottom"><img src="../Dosyalar/ikon/order.png" class="ps-2"> Toplam Sipariş: <span class="bg-danger border-danger rounded p-1"></span></div>
+            <div class="col-md-2 mt-3 mb-3 border-end" id="divbottom"><img src="../Dosyalar/ikon/order.png" class="ps-2"> Toplam Sipariş: <span class="bg-danger border-danger rounded p-1"><?php $sistem->toplamSiparis($db); ?></span></div>
             <div class="col-md-2 mt-3 mb-3 border-end" id="divbottom"><img src="../Dosyalar/ikon/percent.png" class="ps-2"> Doluluk Oranı: <span class="bg-danger border-danger rounded p-1"></span></div>
             <div class="col-md-6 mt-3 mb-3 border-end text-center" id="divbottom"><img src="../Dosyalar/ikon/waiter.png" class="ps-2"> Garson: <span class="text-danger"></span> <span><a href="islem.php?islem=cikis" class="ms-4 bg-warning border-warning rounded text-dark ps-3 pe-3 pt-2 pb-2" style="text-decoration: none;">LOG OUT</a></span></div>
         </div>

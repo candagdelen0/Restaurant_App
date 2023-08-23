@@ -102,4 +102,10 @@
             $toplam = $masa->num_rows;
             echo $toplam;
         }
+
+        public function toplamSiparis($vt) {
+            $sip = $this->genelsorgu($vt, "SELECT * FROM siparisler",1);
+            $toplamSip = $sip->num_rows;
+            echo $toplamSip;
+        }
     }
