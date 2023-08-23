@@ -17,6 +17,14 @@
         </div>
         <div class="row justify-content-around mt-3"></div>
 
+        <?php 
+            $kasiyer = $sistem->genelsorgu($db, "SELECT * FROM kasiyer",1);
+            while($ksyr = $kasiyer->FETCH_ASSOC()) {
+                $kasiyerad = $ksyr["ad"];
+                
+            }
+            if ($_SESSION['Kullanici'] == $kasiyerad):
+        ?>
         
         <div class="row fixed-bottom" id="bottombar">
             <div class="col-md-2 mt-3 mb-3 ps-4 border-end" id="divbottom"><img src="../Dosyalar/ikon/restaurant.png" class="ps-2"> Toplam Masa: <span class="bg-danger border-danger rounded p-1"></span></div>
@@ -26,7 +34,7 @@
         </div>
     </div>
     <?php 
-
+        else:
             echo ' <div class="row bg-white border border-light" id="rezervelistesi"></div>  
             <div class="row bg-light border border-light" id="rezervealan">
                 <div class="row mx-auto text-center">
@@ -59,7 +67,7 @@
             </div>
         </div>
 
-
+        <?php endif; ?>
 
 </body>
 </html>
