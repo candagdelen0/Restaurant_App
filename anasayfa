@@ -43,7 +43,10 @@
                         <div class="col-md-12">
                             <select name="masaid" class="form-control mt-2">
                                 <option class="text-center" value="0">SEÇ</option>';
-                                   
+                                    $masa = $sistem->genelsorgu($db, "SELECT * FROM masalar WHERE durum=0 AND rezervedurum=0",1);
+                                    while ($masalar = $masa->FETCH_ASSOC()):
+                                        echo '<option class="text-center" value="'.$masalar["id"] .'">'.$masalar["ad"] .'</option>';
+                                    endwhile;
                                 ?>
                             </select>
                         </div>
