@@ -96,4 +96,10 @@
             $dolson = $dv->prepare("UPDATE doluluk SET bosMasa=$bos, doluMasa=$dolu WHERE id=1");
             $dolson->execute();
         }
+
+        public function toplamMasa($vt) {
+            $masa = $this->genelsorgu($vt, "SELECT * FROM masalar",1);
+            $toplam = $masa->num_rows;
+            echo $toplam;
+        }
     }
