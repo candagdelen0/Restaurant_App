@@ -120,4 +120,11 @@
         function masagetir($dv, $id) {
             return $this->genelsorgu($dv, "SELECT * FROM masalar WHERE id = $id", 1);
         }
+
+        function urungrup($dv) {
+            $kat = $this->genelsorgu($dv, "SELECT * FROM kategori", 1);
+            while ($kategori = $kat->FETCH_ASSOC()):
+                echo '<a class="btn text-center mt-2 ms-1 p-2"  sectionId = "'.$kategori["id"].'"  style="background-color: #4169E1; color: #FFFFF0; height:48px; width: 200px;">'.$kategori["ad"].'</a>';
+            endwhile;
+        }
     }
