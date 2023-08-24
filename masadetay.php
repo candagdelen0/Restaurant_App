@@ -9,6 +9,7 @@
 ?>
     <title>MeyCan Masa Yönetimi</title>
 
+    <!-- Ürün Grubu için jquery eklemesi yapılacak -->
 
     <div class="container-fluid"><?php
         if($masaid != 0):
@@ -36,7 +37,7 @@
                 <div class="col-md-6 bg-light" id="urunler">
                     <form id="ekleform">
                         <div class="row justify-content-evenly border-bottom pb-2" style="min-height:120px;"></div>
-                        <div class="row"><div class="col-md-12" style="min-height:410px; background-color:#F0F8FF;" id="katurun"></div><hr>
+                        <div class="row"><div class="col-md-12" style="min-height:410px; background-color:#F0F8FF;" id="katurun"><?php $sistem->urungrup($db); ?></div><hr>
                         <div class="row">
                             <div class="col-md-12 text-center"><?php
                                 for($i=1; $i<=10; $i++):
