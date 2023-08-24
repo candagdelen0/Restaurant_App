@@ -116,4 +116,8 @@
             $oran = ($doldur["doluMasa"]*100) / $total;
             echo $oran = substr($oran, 0, 5). " %";
         }
+
+        function masagetir($dv, $id) {
+            return $this->genelsorgu($dv, "SELECT * FROM masalar WHERE id = $id", 1);
+        }
     }
