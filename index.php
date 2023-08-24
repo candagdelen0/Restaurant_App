@@ -50,7 +50,4 @@
     </div>
     <form>
 
-
-
-</body>
-</html>
+    <?php include "partial/_footer.php"; ?>

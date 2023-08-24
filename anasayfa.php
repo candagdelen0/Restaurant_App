@@ -72,5 +72,4 @@
 
         <?php endif; ?>
 
-</body>
-</html>
+        <?php include "partial/_footer.php"; ?>
