@@ -13,6 +13,10 @@
         endif;
     }
 
+    function uyari($tip, $metin) {
+        echo '<div class="mt-3 text-center alert alert-'.$tip .' ">'. $metin .' </div>';
+    }
+
 
 
 ?>
