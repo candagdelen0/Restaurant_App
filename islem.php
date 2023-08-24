@@ -17,6 +17,13 @@
         echo '<div class="mt-3 text-center alert alert-'.$tip .' ">'. $metin .' </div>';
     }
 
+    /* ****************************      İŞLEMLER        ********************** */
+    @$islem = htmlspecialchars($_GET["islem"]);
+    switch($islem):
+        case "cikis":
+            session_destroy();
+            header("Location:index.php");
+        break;
 
 
 ?>

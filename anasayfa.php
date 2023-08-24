@@ -7,6 +7,7 @@
     endif;
 ?>
 <title>MeyCan Restaurant</title>
+<link rel="stylesheet" href="css/homepages.css">
 
 <body>
     <div class="container-fluid">
@@ -62,14 +63,14 @@
             </div>
             <div class="row fixed-bottom" id="bottombar">
                 <div class="col-md-9 mt-3 mb-3 border-end" id="divbottom">
-                <img src="../Dosyalar/ikon/waiter.png" class="ps-5"> Garson: <span class="text-danger"><?php echo $_SESSION['Kullanici'] ?></span> 
+                    <img src="../Dosyalar/ikon/waiter.png" class="ps-5"> Garson: <span class="text-danger"><?php echo $_SESSION['Kullanici'] ?></span> 
                     <span><a href="islem.php?islem=cikis" class="ms-4 bg-warning border-warning rounded text-dark ps-3 pe-3 pt-2 pb-2" style="text-decoration: none;">LOG OUT</a></span>
                 </div>
                 <div class="col-md-2 mt-3 mb-3 border-end text-center"><img src="../Dosyalar/ikon/reserved.png" class="pe-3" id="rezformac"><img src="../Dosyalar/ikon/card.png" class="ps-3" id="rezlist"></div>
                 <div class="col-md-1 mt-3 mb-3 text-center"> <img src="../Dosyalar/ikon/next.png" id="formkapat"></div>
             </div>
         </div>
+        <script src="js/homepages_waiter.js"></script>
 
-        <?php endif; ?>
-
-        <?php include "partial/_footer.php"; ?>
+    <?php endif; ?>
+<?php include "partial/_footer.php"; ?>
