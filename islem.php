@@ -53,13 +53,20 @@
                         </tr>
                     </thead>
                     <tbody>';
-                       
+                    $adet = 0;
+                    $sontutar = 0;
+                    while($urundiz = $var->FETCH_ASSOC()):
+                        $tutar = $urundiz["adet"] * $urundiz["urunfiyat"];
+                        $adet += $urundiz["adet"];
+                        @$sontutar += $tutar;
+                        $masaid = $urundiz["masaid"];
                             echo '<tr>
                                 <td class="mx-auto text-center p-4"></td>
                                 <td class="mx-auto text-center p-5" id="adetler"></td>
                                 <td class="mx-auto text-center p-5"></td>
-                            </tr>
-                       <tr>
+                            </tr>';
+                        endwhile;
+                       echo '<tr>
                             <td class="bg-dark text-white text-center"><b>Toplam</b></td>
                             <td class="bg-dark" colspan="2">
                                
