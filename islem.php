@@ -32,6 +32,11 @@
             endwhile;
         break;
         case "goster":
+            $masaid = htmlspecialchars($_GET["id"]);
+            $siparis = "SELECT * FROM siparisler WHERE masaid=$masaid";
+            $bakiye = "SELECT * FROM masabakiye WHERE masaid=$masaid";
+            $var = benimsorgum($db,$siparis, 1);
+            $bak = benimsorgum($db,$bakiye, 1);
             
                 echo '<table class="table table-bordered table-striped text-center mt-1">
                     <thead>
