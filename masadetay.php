@@ -11,6 +11,22 @@
 
     <script>
         $(document).ready(function() {
+            var id= "<?php echo $masaid; ?>";
+            $("#butonlar").load("islem.php?islem=butonlar&id="+id);
+            $("#veri").load("islem.php?islem=goster&id="+id);
+            $('#btn').click(function() {
+                $.ajax({
+                    type: "POST",
+                    url: 'islem.php?islem=ekle',
+                    data: $('#ekleform').serialize(),
+                    success: function(donen_veri) {
+                        $('#ekleform').trigger("reset");
+                        $("#cevap").html(donen_veri).fadeOut(1400);
+                        window.location.reload();
+                    },		
+                });
+            });
+
             $('#urunler a').click(function() {
                 var sectionId = $(this).attr('sectionId');
                 $("#katurun").load("islem.php?islem=urun&katid=" + sectionId);
