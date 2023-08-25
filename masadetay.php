@@ -9,7 +9,15 @@
 ?>
     <title>MeyCan Masa Yönetimi</title>
 
-    <!-- Ürün Grubu için jquery eklemesi yapılacak -->
+    <script>
+        $(document).ready(function() {
+            $('#urunler a').click(function() {
+                var sectionId = $(this).attr('sectionId');
+                $("#katurun").load("islem.php?islem=urun&katid=" + sectionId);
+            });
+        });
+    </script>
+
 
     <div class="container-fluid"><?php
         if($masaid != 0):
