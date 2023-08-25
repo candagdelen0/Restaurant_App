@@ -31,6 +31,36 @@
                 echo '<label class="btn btn-info m-2"><input name="urunid" type="radio" value="'.$urunler["id"].'"/>  '.$urunler["ad"].'</label>';
             endwhile;
         break;
+        case "goster":
+            
+                echo '<table class="table table-bordered table-striped text-center mt-1">
+                    <thead>
+                        <tr>
+                            <th class="bg-dark text-white">Ürün Adı</th>
+                            <th class="bg-dark text-white">Adet</th>
+                            <th class="bg-dark text-white">Tutar</th>
+                            <th class="bg-dark text-white">İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+                       
+                            echo '<tr>
+                                <td class="mx-auto text-center p-4"></td>
+                                <td class="mx-auto text-center p-5" id="adetler"></td>
+                                <td class="mx-auto text-center p-5"></td>
+                            </tr>
+                       <tr>
+                            <td class="bg-dark text-white text-center"><b>Toplam</b></td>
+                            <td class="bg-dark" colspan="2">
+                               
+                                   
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>';
+            endif;
+        break;
         endswitch;
 
 
