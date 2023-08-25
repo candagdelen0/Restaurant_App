@@ -61,9 +61,9 @@
                         @$sontutar += $tutar;
                         $masaid = $urundiz["masaid"];
                             echo '<tr>
-                                <td class="mx-auto text-center p-4"></td>
-                                <td class="mx-auto text-center p-5" id="adetler"></td>
-                                <td class="mx-auto text-center p-5"></td>
+                                <td class="mx-auto text-center p-4">'.$urundiz["urunad"].'</td>
+                                <td class="mx-auto text-center p-5" id="adetler"><span data-id="'.$urundiz["id"].'" data-value="'.$urundiz["adet"].'">'.$urundiz["adet"].'</span></td>
+                                <td class="mx-auto text-center p-5">'.number_format($tutar,2,'.',',').'</td>
                             </tr>';
                         endwhile;
                        echo '<tr>
