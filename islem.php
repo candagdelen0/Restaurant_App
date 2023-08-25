@@ -24,6 +24,13 @@
             session_destroy();
             header("Location:index.php");
         break;
+        case "urun":
+            $katid = htmlspecialchars($_GET["katid"]);
+            $urun = benimsorgum($db, "SELECT * FROM urunler WHERE katid = $katid", 1);
+            while ($urunler = $urun->FETCH_ASSOC()):
+                echo '<label class="btn btn-info m-2"><input name="urunid" type="radio" value="'.$urunler["id"].'"/>  '.$urunler["ad"].'</label>';
+            endwhile;
+        break;
         endswitch;
 
 
