@@ -66,13 +66,20 @@
                                 <td class="mx-auto text-center p-5">'.number_format($tutar,2,'.',',').'</td>
                             </tr>';
                         endwhile;
-                       echo '<tr>
+                        echo '<tr>
                             <td class="bg-dark text-white text-center"><b>Toplam</b></td>
-                            <td class="bg-dark" colspan="2">
-                               
-                                   
-                                
-                            </td>
+                            <td class="bg-dark" colspan="2">';
+                                if ($bak->num_rows != 0):
+                                    $masabakiyesi = $bak->FETCH_ASSOC();
+                                    @$odenenTutar = $masabakiyesi["tutar"];
+                                    @$kalanTutar = $sontutar - $odenenTutar;
+                                    echo '<p class="m-0 p-0"><del class="text-danger" id="toplamTutar"> '.number_format($sontutar,2,'.',','). " </del> |
+                                    <font class='text-success'>" . number_format($odenenTutar,2,'.',',')."</font>
+                                    <font class='text-info'><br>Ödenecek : ". number_format($kalanTutar,2,'.',',')."</font></p>" ;
+                                else:
+                                    echo "<span class='text-info'><b id='toplamTutar'>".number_format($sontutar,2,'.',',')."</b> TL</span>";
+                                endif;	
+                            echo '</td>
                         </tr>
                     </tbody>
                 </table>';
