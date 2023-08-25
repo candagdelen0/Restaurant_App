@@ -24,6 +24,7 @@
             session_destroy();
             header("Location:index.php");
         break;
+
         case "urun":
             $katid = htmlspecialchars($_GET["katid"]);
             $urun = benimsorgum($db, "SELECT * FROM urunler WHERE katid = $katid", 1);
@@ -31,13 +32,17 @@
                 echo '<label class="btn btn-info m-2"><input name="urunid" type="radio" value="'.$urunler["id"].'"/>  '.$urunler["ad"].'</label>';
             endwhile;
         break;
+
         case "goster":
             $masaid = htmlspecialchars($_GET["id"]);
             $siparis = "SELECT * FROM siparisler WHERE masaid=$masaid";
             $bakiye = "SELECT * FROM masabakiye WHERE masaid=$masaid";
             $var = benimsorgum($db,$siparis, 1);
             $bak = benimsorgum($db,$bakiye, 1);
-            
+            if ($var->num_rows == 0):
+                uyari("danger", "Henüz Sipariş Yok");
+                benimsorgum($db, "DELETE FROM masabakiye WHERE masaid=$masaid",1);
+            else:
                 echo '<table class="table table-bordered table-striped text-center mt-1">
                     <thead>
                         <tr>
