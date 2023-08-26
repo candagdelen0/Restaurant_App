@@ -17,6 +17,27 @@
         echo '<div class="mt-3 text-center alert alert-'.$tip .' ">'. $metin .' </div>';
     }
 
+    function formgetir($masaid, $vt, $baslik, $durum, $btnvalue, $btnid, $formvalue) {
+        echo '<div class="card border-primary m-3 text-center" style="max-width:18rem;">
+            <div class="card-header">'.$baslik.'</div>
+            <div class="card-body text-info">
+                <form id ="'.$formvalue.'">
+                    <input type="hidden" name="mevcutmasaid" value="'.$masaid.'">
+                    <select name="hedefmasa" class="form-control">';
+                        $masadgstr = benimsorgum($vt, "SELECT * FROM masalar WHERE durum=$durum AND rezervedurum=0",1);
+                        while ($sonuc = $masadgstr->FETCH_ASSOC()):
+                            if ($masaid != $sonuc["id"]):
+                                echo '<option value="'.$sonuc["id"].'">'.$sonuc["ad"].'</option>';
+                            endif;
+                        endwhile;
+                    echo '</select>
+                    <input type="button" id="'.$btnid.'" value="'.$btnvalue.'" class="btn btn-primary mt-2" style="width: 80%;">
+                </form>
+            </div>
+        </div>';
+    }
+
+
     /* ****************************      İŞLEMLER        ********************** */
     @$islem = htmlspecialchars($_GET["islem"]);
     switch($islem):
