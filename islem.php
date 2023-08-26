@@ -85,6 +85,34 @@
                 </table>';
             endif;
         break;
+
+        case "butonlar":
+            $id=htmlspecialchars($_GET["id"]);
+            echo '<div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <p class="text-center"><a href="adisyon.php?masaid='.$id.'" onclick="ortasayfa(this.href,\'mywindow\',\'450\',\'450\',\'yes\');return false" style="font-weight: bold; height: 40px; width: 85%;" class="btn btn-primary mt-3">ADİSYON</a></p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12 text-center" id="birlestir"><a class="btn btn-info mt-2" style="height:40px; width: 85%;" >BİRLEŞTİR</a></div>
+                        <div class="col-md-12" id="birlestirform"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center" id="degistir"><a class="btn btn-info mt-2" style="height:40px; width: 85%;" >DEĞİŞTİR</a></div>
+                        <div class="col-md-12" id="degistirform"></div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                    <div class="row">
+                        <p class="text-center" id="tumsil"><a sectionId3=" '.$id.'" class="btn btn-danger" style="height:40px; width: 85%;">Masayı Boşalt</a></p>
+                    </div>
+                </div>
+            </div>';
+        break;
+
+
         endswitch;
 
 
