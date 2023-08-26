@@ -171,6 +171,10 @@
                 $masaid = htmlspecialchars($_POST["masaid"]);
                 $urunsil = $db->prepare("DELETE FROM siparisler WHERE urunid = $urunid AND masaid = $masaid");
                 $urunsil->execute();
+                $kontrol = benimsorgum($db, "SELECT * FROM siparisler WHERE masaid = $masaid",1);
+                if ($kontrol->num_rows == 0):
+                    $masaguncelle = benimsorgum($db, "UPDATE masalar SET durum=0 WHERE id = $masaid",0);
+                endif;
             endif;
         break;
 
