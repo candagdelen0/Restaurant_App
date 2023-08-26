@@ -118,11 +118,11 @@
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12 text-center" id="birlestir"><a class="btn btn-info mt-2" style="height:40px; width: 85%;" >BİRLEŞTİR</a></div>
-                        <div class="col-md-12" id="birlestirform"></div>
+                        <div class="col-md-12" id="birlestirform">'; formgetir($id, $db, "Masa Birleştir<span id='kapa1' class='text-danger float-end'>X</span>", 1, "BİRLEŞTİR", "birlestirbtn", "birlestirformveri"); echo'</div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-center" id="degistir"><a class="btn btn-info mt-2" style="height:40px; width: 85%;" >DEĞİŞTİR</a></div>
-                        <div class="col-md-12" id="degistirform"></div>
+                        <div class="col-md-12" id="degistirform">'; formgetir($id, $db, "Masa Değiştir<span id='kapa2' class='text-danger float-end'>X</span>", 0, "DEĞİŞTİR", "degistirbtn", "degistirformveri");  echo '</div>
                     </div>
                 </div>
                 <div class="col-md-12 mt-3">
