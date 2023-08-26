@@ -145,6 +145,19 @@
                         $sonadet = $adet + $urundiz["adet"];
                         $islemid = $urundiz["id"];
                         $guncelle = benimsorgum($db, "UPDATE siparisler SET adet = $sonadet WHERE id = $islemid", 0); 
+                    else:
+                        $gelen = benimsorgum($db, "SELECT * FROM urunler WHERE id = $urunid",1);
+                        $gelenurun = $gelen->FETCH_ASSOC();
+                        $urunad = $gelenurun["ad"];
+                        $katid = $gelenurun["katid"];
+                        $urunfiyat = $gelenurun["fiyat"];
+                        $gad = $_SESSION['Kullanici'];
+                        $garson = benimsorgum($db, "SELECT * FROM garson WHERE ad = '$gad'",1);
+                        $gid = $garson->FETCH_ASSOC();
+                        $garsonid = $gid["id"];
+                        $masaguncelle = benimsorgum($db, "UPDATE masalar SET durum=1 WHERE id = $masaid",0);
+                        $siparis = "INSERT INTO siparisler (masaid,garsonid,urunid,urunad,urunfiyat,adet) VALUES ($masaid, $garsonid, $urunid, '$urunad', $urunfiyat, $adet)";
+                        $siparisekle = benimsorgum($db, $siparis,0);
                     endif;
                 endif;
             endif;
