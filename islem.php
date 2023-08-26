@@ -133,6 +133,17 @@
             </div>';
         break;
 
+        case "ekle":
+            if ($_POST):
+                @$masaid = htmlspecialchars($_POST["masaid"]);
+                @$urunid = htmlspecialchars($_POST["urunid"]);
+                @$adet = htmlspecialchars($_POST["adet"]);
+                if ($masaid !="" || $urunid !="" || $adet !=""):
+                    $var = benimsorgum($db, "SELECT * FROM siparisler WHERE masaid = $masaid AND urunid = $urunid",1);
+                    
+                endif;
+            endif;
+        break;
 
         endswitch;
 
