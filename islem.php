@@ -140,7 +140,12 @@
                 @$adet = htmlspecialchars($_POST["adet"]);
                 if ($masaid !="" || $urunid !="" || $adet !=""):
                     $var = benimsorgum($db, "SELECT * FROM siparisler WHERE masaid = $masaid AND urunid = $urunid",1);
-                    
+                    if ($var->num_rows != 0):
+                        $urundiz = $var->FETCH_ASSOC();
+                        $sonadet = $adet + $urundiz["adet"];
+                        $islemid = $urundiz["id"];
+                        $guncelle = benimsorgum($db, "UPDATE siparisler SET adet = $sonadet WHERE id = $islemid", 0); 
+                    endif;
                 endif;
             endif;
         break;
