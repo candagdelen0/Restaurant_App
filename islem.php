@@ -163,6 +163,18 @@
             endif;
         break;
 
+        case "sil":
+            if (!$_POST):
+                uyari("danger","ERİŞİM ENGELLENDİ");
+            else:
+                $urunid = htmlspecialchars($_POST["urunid"]);
+                $masaid = htmlspecialchars($_POST["masaid"]);
+                $urunsil = $db->prepare("DELETE FROM siparisler WHERE urunid = $urunid AND masaid = $masaid");
+                $urunsil->execute();
+            endif;
+        break;
+
+        
         endswitch;
 
 
