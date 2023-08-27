@@ -178,6 +178,17 @@
             endif;
         break;
 
+        case "tumunusil":
+            if (!$_POST):
+                uyari("danger","ERİŞİM ENGELLENDİ");
+            else:
+                $masaid = htmlspecialchars($_POST["masaid"]);
+                benimsorgum($db, "DELETE FROM siparisler WHERE masaid = $masaid",1);
+                benimsorgum($db, "DELETE FROM masabakiye WHERE masaid = $masaid",1);
+                benimsorgum($db, "UPDATE masalar SET durum=0 WHERE id = $masaid",0);
+            endif;
+        break;
+
         
         endswitch;
 
