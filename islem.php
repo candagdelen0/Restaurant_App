@@ -189,6 +189,28 @@
             endif;
         break;
 
+        case "masaislem":
+            $mevcutmasaid = $_POST["mevcutmasaid"];
+            $hedefmasa = $_POST["hedefmasa"];
+            $mevcutmasabak = benimsorgum($db, "SELECT * FROM masabakiye WHERE masaid=$mevcutmasaid",1);
+            $hedefmasabak = benimsorgum($db, "SELECT * FROM masabakiye WHERE masaid=$hedefmasa",1);
+            if ($mevcutmasabak->num_rows != 0):
+                $bakiyesi = $mevcutmasabak->FETCH_ASSOC();
+                $odenentutar = $bakiyesi["tutar"];
+                if ($hedefmasabak->num_rows != 0):
+                    $hedefbakiye = $hedefmasabak->FETCH_ASSOC();
+                    $gunceltutar = $hedefbakiye["tutar"] + $odenentutar;
+                    benimsorgum($db, "UPDATE masabakiye SET tutar=$gunceltutar WHERE masaid=$hedefmasa",1);
+                    benimsorgum($db, "DELETE FROM masabakiye WHERE masaid=$mevcutmasaid",1);
+                else:
+                    benimsorgum($db, "UPDATE masabakiye SET masaid=$hedefmasa WHERE masaid=$mevcutmasaid",1);
+                endif;
+            endif;
+            benimsorgum($db,"UPDATE siparisler SET masaid=$hedefmasa WHERE masaid=$mevcutmasaid",1);
+            benimsorgum($db, "UPDATE masalar SET durum=0 WHERE id=$mevcutmasaid",0);
+            benimsorgum($db, "UPDATE masalar SET durum=1 WHERE id=$hedefmasa",0);
+        break;
+
         
         endswitch;
 
