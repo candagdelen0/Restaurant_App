@@ -221,6 +221,16 @@
                 benimsorgum($db, "UPDATE siparisler SET adet=$adet WHERE id=".$kayitid."",0);
             endif;
         break;
+
+        case "rezerveet":
+            if (!$_POST):
+                uyari("danger","ERİŞİM ENGELLENDİ");
+            else:
+                $masaid = htmlspecialchars($_POST["masaid"]);
+                $kisi = htmlspecialchars($_POST["kisi"]);
+                $rez = benimsorgum($db, "UPDATE masalar SET durum=1, rezervedurum=1, kisi='$kisi' WHERE id=$masaid",0);
+            endif;
+        break;
         
         endswitch;
 
