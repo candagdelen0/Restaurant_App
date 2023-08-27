@@ -231,6 +231,21 @@
                 $rez = benimsorgum($db, "UPDATE masalar SET durum=1, rezervedurum=1, kisi='$kisi' WHERE id=$masaid",0);
             endif;
         break;
+
+        case "rezervelistesi":
+            $list = benimsorgum($db, "SELECT * FROM masalar WHERE rezervedurum=1",1);
+            echo '<div class="col-md-12" id="rezervelistem">';
+                while ($liste = $list->FETCH_ASSOC()):
+                    echo '<div class="alert alert-info" id="masa'.$liste["id"].'">
+                        Masa : <strong>'.$liste["ad"].'</strong><br>  
+                        <strong>'.$liste["kisi"].' </strong> için rezerve edildi.
+	                    <a sectionId="'.$liste["id"].'" class="fas fa-check float-end m-1 text-danger" style="font-size:20px;"></a>
+                    </div>';
+                endwhile;                       
+            echo '</div>';
+        break;
+
+
         
         endswitch;
 
