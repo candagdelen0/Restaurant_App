@@ -245,6 +245,13 @@
             echo '</div>';
         break;
 
+        case "rezervekaldir":
+            if($_POST):
+                $id = htmlspecialchars($_POST["id"]);
+                $rezervesil = benimsorgum($db, "UPDATE masalar SET durum=0, rezervedurum=0, kisi='' WHERE id=$id",0);
+            endif;
+        break;
+
 
         
         endswitch;
