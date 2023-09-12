@@ -14,16 +14,22 @@
     <div class="row">
         <div class="col-md-10 mx-auto mt-3">
             <div class="row">
+                <?php 
+                    $diz = $sistem->genelsorgu($db, "SELECT * FROM masalar WHERE id = $masaid",1);
+                    $dizi = $diz->FETCH_ASSOC();
+                    if ($dizi["durum"] == 1):
+                ?>
                 <div class="col-md-6 bg-light">
                     <div class="row border-bottom">
                         <a href="anasayfa.php" style="text-decoration: none;"><img src="../Dosyalar/ikon/arrow-left.png"></a>
                     </div>
                     <div class="row ms-3">
-                    iskonto ve parça hesap alanı 
+                        <?php include "partial/_parcahesap.php"; ?>
+                        <?php include "partial/_iskontoform.php"; ?>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                           Ödeme butonları alanı
+                            <?php include "partial/_odeme.php"; ?>
                         </div>
                     </div>
                     <div class="row">
@@ -32,7 +38,15 @@
                         </div>
                     </div>
                 </div>
+                <?php else: ?>
+                    <div class="col-md-6">
+                        <div class="row border-bottom bg-light">
+                            <a href="anasayfa.php" style="text-decoration: none;"><img src="../Dosyalar/ikon/arrow-left.png"></a>
+                        </div>
+                    </div>
+                <?php  endif; ?>
 
+                
                 <div class="col-md-6">
                     <div class="row">
                         <div class="col-md-12">
