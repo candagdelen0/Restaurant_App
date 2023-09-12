@@ -56,6 +56,49 @@
         echo '</table>';
     }
 
+    $masadizi=array();
+    $masadata=array();
+    $urundizi=array();
+    $urundata=array();
+
+    $urundizi=array(
+        'Urun Ad',
+        'Adet',
+        'Hasılat'
+    );
+
+    $masadizi=array(
+        'Masa Ad',
+        'Adet',
+        'Hasılat'
+    );
+
+    $virgulnerede=array(2);
+    $son = $yonetim->aciksorgu($db, "SELECT * FROM gecicimasa ORDER BY hasilat DESC",1);
+    $Masatoplamadet = 0;
+    $Masatoplamhasilat = 0;
+    while ($listele = $son->FETCH_ASSOC()):
+        @$masadata[]=array(
+            $listele["masaad"],
+            $listele["adet"],
+            $listele["hasilat"]                                       
+        );
+        $Masatoplamadet += $listele["adet"];
+        $Masatoplamhasilat += $listele["hasilat"];
+    endwhile;
+                                    
+    $son2 = $yonetim->aciksorgu($db, "SELECT * FROM geciciurun ORDER BY hasilat DESC",1);
+    $toplamadet2 = 0;
+    $toplamhasilat2 = 0;
+    while ($listele2 = $son2->FETCH_ASSOC()):
+        @$urundata[]=array(
+            $listele2["urunad"],
+            $listele2["adet"],
+            $listele2["hasilat"]                                       
+        );
+    endwhile;
+                                    
+    excelal(date("d.m.Y"), $masadizi, $urundizi, $masadata, $urundata, $virgulnerede, $Masatoplamadet, $Masatoplamhasilat);
 
 ?>
 
