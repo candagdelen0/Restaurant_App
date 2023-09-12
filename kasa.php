@@ -46,15 +46,28 @@
                     </div>
                 <?php  endif; ?>
 
-                
+
                 <div class="col-md-6">
+                    <?php
+                        if($masaid != 0):
+                            $diz = $sistem->masagetir($db, $masaid);
+                            $dizi = $diz->FETCH_ASSOC();
+                    ?>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="row bg-light border-bottom border-dark">
-                                <div class="fs-2 text-center p-2 text-info" style="font-weight: bold;"></div>
+                                <div class="fs-2 text-center p-2 text-info" style="font-weight: bold;"><?php echo $dizi["ad"]; ?></div>
                             </div>
+                            <?php  endif; ?>
                             <div class="row"><?php
-                                //koşul koyulacak
+                                $masaid = htmlspecialchars($_GET["masaid"]);
+                                $bakiye = "SELECT * FROM masabakiye WHERE masaid=$masaid";
+                                $siparis = "SELECT * FROM siparisler WHERE masaid=$masaid";
+                                $var = $sistem->genelsorgu($db,$siparis, 1);
+                                $bak = $sistem->genelsorgu($db,$bakiye, 1);
+                                if ($var->num_rows == 0):
+                                    echo '<div class="mt-3 text-center alert alert-danger">Sipariş Kaydı Yok</div>';
+                                else:
                                     echo '<table class="table table-bordered table-striped text-center mt-1">
                                         <thead>
                                             <tr>
@@ -64,25 +77,38 @@
                                             </tr>
                                         </thead>
                                         <tbody>';
-                                         //döngüyle veri çekilecek
+                                            $adet = 0;
+                                            $sontutar = 0;
+                                            while($urundiz = $var->FETCH_ASSOC()):
+                                                $tutar = $urundiz["adet"] * $urundiz["urunfiyat"];
+                                                $adet += $urundiz["adet"];
+                                                @$sontutar += $tutar;
+                                                $masaid = $urundiz["masaid"];
                                                 echo '<tr>
-                                                    <td class="mx-auto text-center p-4"></td>
-                                                    <td class="mx-auto text-center p-5"><span data-id="" data-value=""></span></td>
-                                                    <td class="mx-auto text-center p-5"></td>
+                                                    <td class="mx-auto text-center p-4">'.$urundiz["urunad"].'</td>
+                                                    <td class="mx-auto text-center p-5"><span data-id="'.$urundiz["id"].'" data-value="'.$urundiz["adet"].'">'.$urundiz["adet"].'</span></td>
+                                                    <td class="mx-auto text-center p-5">'.number_format($tutar,2,'.',',').'</td>
                                                 </tr>';
-                                                //sonuç işlemleri
+                                            endwhile;
                                             echo '<tr>
                                                 <td class="bg-dark text-white text-center"><b>Toplam</b></td>
                                                 <td class="bg-dark text-white text-center"><b>'.$adet.'</b></td>
-                                                <td class="bg-dark" colspan="2">
-                                                    <p class="m-0 p-0"><del class="text-danger" id="toplamTutar"> '.number_format($sontutar,2,'.',','). " </del> |
+                                                <td class="bg-dark" colspan="2">';
+                                                    if ($bak->num_rows != 0):
+                                                        $masabakiyesi = $bak->FETCH_ASSOC();
+                                                        @$odenenTutar = $masabakiyesi["tutar"];
+                                                        @$kalanTutar = $sontutar - $odenenTutar;
+                                                        echo '<p class="m-0 p-0"><del class="text-danger" id="toplamTutar"> '.number_format($sontutar,2,'.',','). " </del> |
                                                         <font class='text-success'>" . number_format($odenenTutar,2,'.',',')."</font>
-                                                        <font class='text-info'><br>Ödenecek : ". number_format($kalanTutar,2,'.',',')."</font></p>
-
-                                               </td>
+                                                        <font class='text-info'><br>Ödenecek : ". number_format($kalanTutar,2,'.',',')."</font></p>" ;
+                                                    else:
+                                                        echo "<span class='text-info'><b id='toplamTutar'>".number_format($sontutar,2,'.',',')."</b> TL</span>";
+                                                    endif;	
+                                                echo '</td>
                                             </tr>
                                         </tbody>
-                                    </table>";
+                                    </table>';
+                                endif;
                             ?></div>
                         </div>
                     </div>
